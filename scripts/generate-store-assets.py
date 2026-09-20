@@ -39,13 +39,17 @@ def color(key):
     return "#%02X%02X%02X" % tuple(C[key])
 
 
+# Palette-sheet background: a theme tone that is NOT used as a swatch card, so no
+# card can blend into the page behind it.
+INTRO_BG = color("tab_text")
+
 css = f"""
 :root{{
   --frame:{color('frame')};--toolbar:{color('toolbar')};--ob:{color('omnibox_background')};
   --obt:{color('omnibox_text')};--tt:{color('tab_text')};--tbt:{color('tab_background_text')};
   --tbi:{color('toolbar_button_icon')};--bm:{color('bookmark_text')};
   --ntp:{color('ntp_background')};--nt:{color('ntp_text')};--nl:{color('ntp_link')};
-  --edge:{color('button_background')};
+  --edge:{color('button_background')};--sheet:{INTRO_BG};--ink:{color('frame')};
 }}
 *{{box-sizing:border-box}}
 body{{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--ntp)}}
@@ -78,9 +82,11 @@ body{{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--ntp)}}
            color:{CUSTOMIZE_TEXT};font-size:12px;border-radius:16px;padding:8px 14px;
            display:flex;align-items:center;gap:6px}}
 
-/* ---- screenshot 2: theme introduction + palette ---- */
-.intro{{width:1280px;height:800px;padding:65px 72px;background:var(--ntp);color:var(--nt)}}
-.kicker{{font-size:13px;letter-spacing:3px;color:var(--nl)}}
+/* ---- screenshot 2: theme introduction + palette ----
+   The palette sheet sits on tab_text, a light tone that no swatch uses, so no
+   card can blend into the page behind it. */
+.intro{{width:1280px;height:800px;padding:65px 72px;background:var(--sheet);color:var(--ink)}}
+.kicker{{font-size:13px;letter-spacing:3px;color:var(--edge)}}
 .intro h1{{font:54px Georgia,serif;margin:20px 0}}
 .intro p{{font-size:21px;margin:0}}
 .cards{{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:35px}}
@@ -88,7 +94,7 @@ body{{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--ntp)}}
       display:flex;flex-direction:column;justify-content:end}}
 .card strong{{font-size:28px}}
 .card span{{font-size:17px;margin-top:12px}}
-.intro p.chips{{font-size:16px;margin:44px 0 0;color:var(--tbt)}}
+.intro p.chips{{font-size:16px;margin:44px 0 0;color:var(--edge)}}
 
 /* ---- promo tiles ---- */
 .promo{{position:relative;overflow:hidden}}
@@ -178,7 +184,7 @@ PALETTE = [
     ("Deep Plum", "frame", "Window frame & buttons", color("tab_text")),
     ("Twilight Plum", "toolbar", "Toolbar, active tab, bookmark bar", color("tab_text")),
     ("Midnight Violet", "ntp_background", "New tab background", color("ntp_text")),
-    ("Soft Orchid", "ntp_link", "Links, headers, accent", color("ntp_background")),
+    ("Soft Orchid", "ntp_link", "Links, headers, accent", color("frame")),
 ]
 cards = "".join(
     f'<div class="card" style="background:{color(key)};color:{fg}">'
@@ -200,6 +206,10 @@ JOBS = [
 
 
 def main():
+    # The palette sheet background must not be one of the swatches, or that card
+    # blends into the page (see the "bg must differ from swatches" rule).
+    swatches = {color(key) for _name, key, _role, _fg in PALETTE}
+    assert INTRO_BG not in swatches, f"palette sheet bg {INTRO_BG} collides with a swatch"
     with sync_playwright() as p:
         engine = p.chromium.launch(headless=True)
         tab = engine.new_page(device_scale_factor=1)

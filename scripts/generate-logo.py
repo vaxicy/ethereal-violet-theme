@@ -163,7 +163,7 @@ def c_crystal(cw):
     left = (0.21 * S, 0.50 * S)
     paint(L, m_poly([top, right, bottom, left]), cw["mark"])
     paint(L, m_poly([top, left, (0.50 * S, 0.50 * S)]), cw["accent"])
-    paint(L, m_star4(0.795 * S, 0.265 * S, 0.070 * S, 0.014 * S), cw["hilite"])
+    paint(L, m_star4(0.775 * S, 0.285 * S, 0.070 * S, 0.014 * S), cw["hilite"])
     paint(L, m_star4(0.265 * S, 0.735 * S, 0.045 * S, 0.010 * S), cw["accent"])
     return L
 
@@ -217,6 +217,12 @@ CONCEPTS = [
 
 CHOSEN = "crystal"          # user picked candidate 03 (deep plum card colorway)
 
+# Boxes (in canvas fractions) that a mark must be centred on. The crystal gem is
+# the visual mass of that mark, so it is centred on its own outline - centring on
+# the drawn bounding box instead would drag it off-centre towards the sparkles.
+GEM_BOX = (0.21, 0.15, 0.79, 0.85)
+ANCHORS = {"crystal": GEM_BOX}
+
 
 # --- composition -------------------------------------------------------------
 def card(card_rgb):
@@ -228,13 +234,17 @@ def card(card_rgb):
     return img
 
 
-def compose(concept, cw):
+def compose(concept, cw, anchor=None):
+    """Draw the mark on the card, centring it on `anchor` (canvas fractions) if given."""
     layer = concept(cw)
-    bbox = layer.split()[3].getbbox()
-    assert bbox is not None, "nothing drawn"
+    if anchor is None:
+        box = layer.split()[3].getbbox()
+        assert box is not None, "nothing drawn"
+    else:
+        box = (anchor[0] * S, anchor[1] * S, anchor[2] * S, anchor[3] * S)
     centered = Image.new("RGBA", (S, S), (0, 0, 0, 0))
-    centered.alpha_composite(layer, (int(round((S - bbox[0] - bbox[2]) / 2)),
-                                     int(round((S - bbox[1] - bbox[3]) / 2))))
+    centered.alpha_composite(layer, (int(round(S / 2 - (box[0] + box[2]) / 2)),
+                                     int(round(S / 2 - (box[1] + box[3]) / 2))))
     b = centered.split()[3].getbbox()
     margin = 0.14 * S
     assert b[0] >= margin and b[1] >= margin, f"mark too close to card edge: {b}"
@@ -299,8 +309,9 @@ def write_candidates():
     OUT.mkdir(parents=True, exist_ok=True)
     rows = []
     for num, slug, en, cn, concept in CONCEPTS:
-        dark = compose(concept, DARK_CW)
-        light = compose(concept, LIGHT_CW)
+        anchor = ANCHORS.get(slug)
+        dark = compose(concept, DARK_CW, anchor)
+        light = compose(concept, LIGHT_CW, anchor)
         dark.resize((512, 512), Image.LANCZOS).save(OUT / f"candidate-{num}-{slug}.png")
         light.resize((512, 512), Image.LANCZOS).save(
             OUT / f"candidate-{num}-{slug}-light.png")
@@ -314,7 +325,7 @@ def write_final():
     concept = next(c for _num, slug, _en, _cn, c in CONCEPTS if slug == CHOSEN)
     dest = ROOT / "logo"
     dest.mkdir(parents=True, exist_ok=True)
-    icon = compose(concept, DARK_CW).resize((SIZE, SIZE), Image.LANCZOS)
+    icon = compose(concept, DARK_CW, ANCHORS.get(CHOSEN)).resize((SIZE, SIZE), Image.LANCZOS)
     icon.save(dest / "logo128.png")
     print(f"wrote logo/logo128.png ({SIZE}x{SIZE}) - concept '{CHOSEN}', deep plum card")
     assert icon.size == (SIZE, SIZE)

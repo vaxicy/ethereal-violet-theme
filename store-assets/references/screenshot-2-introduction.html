@@ -4,7 +4,7 @@
   --obt:#EDE2F2;--tt:#F6ECFA;--tbt:#C0A9CC;
   --tbi:#E3D3EC;--bm:#C0A9CC;
   --ntp:#22182A;--nt:#F1E7F5;--nl:#C79BE0;
-  --edge:#5C4767;
+  --edge:#5C4767;--sheet:#F6ECFA;--ink:#3B2A46;
 }
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--ntp)}
@@ -37,9 +37,11 @@ body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--ntp)}
            color:#E8EAED;font-size:12px;border-radius:16px;padding:8px 14px;
            display:flex;align-items:center;gap:6px}
 
-/* ---- screenshot 2: theme introduction + palette ---- */
-.intro{width:1280px;height:800px;padding:65px 72px;background:var(--ntp);color:var(--nt)}
-.kicker{font-size:13px;letter-spacing:3px;color:var(--nl)}
+/* ---- screenshot 2: theme introduction + palette ----
+   The palette sheet sits on tab_text, a light tone that no swatch uses, so no
+   card can blend into the page behind it. */
+.intro{width:1280px;height:800px;padding:65px 72px;background:var(--sheet);color:var(--ink)}
+.kicker{font-size:13px;letter-spacing:3px;color:var(--edge)}
 .intro h1{font:54px Georgia,serif;margin:20px 0}
 .intro p{font-size:21px;margin:0}
 .cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:35px}
@@ -47,7 +49,7 @@ body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--ntp)}
       display:flex;flex-direction:column;justify-content:end}
 .card strong{font-size:28px}
 .card span{font-size:17px;margin-top:12px}
-.intro p.chips{font-size:16px;margin:44px 0 0;color:var(--tbt)}
+.intro p.chips{font-size:16px;margin:44px 0 0;color:var(--edge)}
 
 /* ---- promo tiles ---- */
 .promo{position:relative;overflow:hidden}
@@ -65,4 +67,4 @@ body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--ntp)}
                  border:2px solid var(--nl);border-radius:16px;overflow:hidden;text-align:left}
 .poster .browser{height:610px}
 .poster .content{padding-top:85px}
-</style></head><body><div class="intro"><div class="kicker">A VIOLET EVENING FOR THE NEW TAB</div><h1>Ethereal Violet Theme</h1><p>Deep plum, soft lilac, and a quiet orchid glow.</p><div class="cards"><div class="card" style="background:#3B2A46;color:#F6ECFA"><strong>Deep Plum</strong><span>#3B2A46 &#183; Window frame & buttons</span></div><div class="card" style="background:#4A3854;color:#F6ECFA"><strong>Twilight Plum</strong><span>#4A3854 &#183; Toolbar, active tab, bookmark bar</span></div><div class="card" style="background:#22182A;color:#F1E7F5"><strong>Midnight Violet</strong><span>#22182A &#183; New tab background</span></div><div class="card" style="background:#C79BE0;color:#22182A"><strong>Soft Orchid</strong><span>#C79BE0 &#183; Links, headers, accent</span></div></div><p class="chips">Solid colors &#183; Flat surfaces &#183; Quiet contrast</p></div></body></html>
+</style></head><body><div class="intro"><div class="kicker">A VIOLET EVENING FOR THE NEW TAB</div><h1>Ethereal Violet Theme</h1><p>Deep plum, soft lilac, and a quiet orchid glow.</p><div class="cards"><div class="card" style="background:#3B2A46;color:#F6ECFA"><strong>Deep Plum</strong><span>#3B2A46 &#183; Window frame & buttons</span></div><div class="card" style="background:#4A3854;color:#F6ECFA"><strong>Twilight Plum</strong><span>#4A3854 &#183; Toolbar, active tab, bookmark bar</span></div><div class="card" style="background:#22182A;color:#F1E7F5"><strong>Midnight Violet</strong><span>#22182A &#183; New tab background</span></div><div class="card" style="background:#C79BE0;color:#3B2A46"><strong>Soft Orchid</strong><span>#C79BE0 &#183; Links, headers, accent</span></div></div><p class="chips">Solid colors &#183; Flat surfaces &#183; Quiet contrast</p></div></body></html>
