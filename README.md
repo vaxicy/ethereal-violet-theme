@@ -85,6 +85,6 @@ Search for **Ethereal Violet Theme** in the Chrome Web Store and install it.
 Non-Commercial License — personal use permitted.
 
 - ✅ Personal use, modification for personal use, sharing with attribution.
-- ❌ Commercial use without permission.
+- ❌ Commercial use — a commercial licence is required.
 
 Commercial licensing: contact the author.
