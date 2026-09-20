@@ -79,6 +79,17 @@ Search for **Ethereal Violet Theme** in the Chrome Web Store and install it.
 | `store-assets/ASSET-NOTES.md` | How the store artwork is composed and calibrated |
 | `scripts/generate-logo.py` | Draws the icon (and the exploration sheet of logo concepts) |
 | `scripts/generate-store-assets.py` | Renders every store asset from one HTML/CSS source |
+| `scripts/package.py` | Builds the release ZIP into the default output folder |
+
+## Packaging
+
+```bash
+python3 scripts/package.py
+```
+
+The archive is written as `ethereal-violet-theme-<version>.zip` into the default output folder (two levels above the project, derived from the script location). The version stays `1.0.0` for the first store upload.
+
+Packaged: `manifest.json`, `README.md`, `LICENSE`, `logo/`. Left out, because Chrome Web Store takes them as separate uploads: `store-assets/` (screenshots, promo tiles, listing text), `scripts/`, `.gitignore`, `Cached Theme.pak`. The script re-reads `manifest.json` from inside the finished archive and fails if the archive root or the referenced files are wrong.
 
 ## License
 
