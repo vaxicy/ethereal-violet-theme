@@ -1,0 +1,68 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+:root{
+  --frame:#3B2A46;--toolbar:#4A3854;--ob:#2C1F36;
+  --obt:#EDE2F2;--tt:#F6ECFA;--tbt:#C0A9CC;
+  --tbi:#E3D3EC;--bm:#C0A9CC;
+  --ntp:#22182A;--nt:#F1E7F5;--nl:#C79BE0;
+  --edge:#5C4767;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--ntp)}
+
+/* ---- screenshot 1: full window mockup, layer by layer like real Chrome ---- */
+.browser{width:1280px;height:800px;background:var(--ntp);position:relative;overflow:hidden}
+.tabs{height:44px;background:var(--frame);display:flex;align-items:end;gap:10px;
+      padding:6px 12px 0;color:var(--tbt)}
+.tab{height:37px;width:235px;padding:12px 18px;font-size:13px;border-radius:12px 12px 0 0}
+.tab.active{background:var(--toolbar);color:var(--tt)}
+.close{float:right}
+.wc{margin-left:auto;padding:10px 12px;letter-spacing:22px;color:var(--tt)}
+.tools{height:56px;background:var(--toolbar);display:flex;align-items:center;padding:0 20px;
+       gap:24px;font-size:20px;color:var(--tbi)}
+.omni{flex:1;height:36px;border-radius:22px;background:var(--ob);color:var(--obt);font-size:13px;
+      display:flex;align-items:center;padding:0 18px}
+.bookmarks{height:32px;background:var(--toolbar);color:var(--bm);font-size:12px;
+           display:flex;gap:30px;padding:8px 22px}
+.content{text-align:center;padding-top:96px;color:var(--nt)}
+.google{font-size:80px;line-height:1.18;letter-spacing:-4px;font-weight:500;color:#BC8BE4;
+        margin-bottom:44px}
+.search{width:630px;height:48px;border-radius:28px;background:var(--ob);
+        border:1px solid var(--frame);margin:auto;display:flex;align-items:center;gap:16px;
+        padding:0 20px;color:#9AA0A6;font-size:16px}
+.shortcuts{display:flex;justify-content:center;gap:40px;margin-top:34px}
+.shortcut{width:86px;font-size:12px;text-align:center;color:var(--nt)}
+.shortcut .circle{width:48px;height:48px;border-radius:50%;background:#2F3033;
+                  margin:0 auto 10px;display:flex;align-items:center;justify-content:center;line-height:0}
+.customize{position:absolute;right:22px;bottom:16px;background:#202124;
+           color:#E8EAED;font-size:12px;border-radius:16px;padding:8px 14px;
+           display:flex;align-items:center;gap:6px}
+
+/* ---- screenshot 2: theme introduction + palette ---- */
+.intro{width:1280px;height:800px;padding:65px 72px;background:var(--ntp);color:var(--nt)}
+.kicker{font-size:13px;letter-spacing:3px;color:var(--nl)}
+.intro h1{font:54px Georgia,serif;margin:20px 0}
+.intro p{font-size:21px;margin:0}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:35px}
+.card{height:210px;border-radius:18px;padding:30px;border:1px solid var(--frame);
+      display:flex;flex-direction:column;justify-content:end}
+.card strong{font-size:28px}
+.card span{font-size:17px;margin-top:12px}
+.intro p.chips{font-size:16px;margin:44px 0 0;color:var(--tbt)}
+
+/* ---- promo tiles ---- */
+.promo{position:relative;overflow:hidden}
+.small{width:440px;height:280px;background:var(--ntp);text-align:center;color:var(--nt);padding-top:16px}
+.small img{width:78px;height:78px;display:block;margin:0 auto 6px}
+.small h1{font:38px Georgia,serif;font-weight:normal;margin:0}
+.small .sub{font-size:15px;letter-spacing:4px;margin-top:8px;color:var(--nl)}
+.small p{font-size:13px;margin:18px 0 0;color:var(--tbt)}
+.small:after{content:'';position:absolute;left:0;right:0;bottom:0;height:14px;background:var(--nl)}
+.poster{width:1400px;height:560px;background:var(--toolbar);position:relative;
+        text-align:center;border-top:8px solid var(--nl)}
+.poster h1{font:48px Georgia,serif;font-weight:normal;margin:23px 0 7px;color:var(--tt)}
+.poster p{font-size:17px;margin:0;color:var(--nl)}
+.poster .preview{position:absolute;left:284px;top:145px;transform:scale(.65);transform-origin:top left;
+                 border:2px solid var(--nl);border-radius:16px;overflow:hidden;text-align:left}
+.poster .browser{height:610px}
+.poster .content{padding-top:85px}
+</style></head><body><div class="promo poster"><h1>Ethereal Violet Theme</h1><p>Deep plum, soft lilac, and a quiet orchid glow.</p><div class="preview"><div class="browser"><div class="tabs"><div class="tab active">New Tab <span class="close">&#215;</span></div><div class="tab">Reading list <span class="close">&#215;</span></div><span style="padding:10px">+</span><span class="wc">&#8722; &#9633; &#215;</span></div><div class="tools"><span>&#8592;</span><span>&#8594;</span><span>&#8635;</span><div class="search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9AA0A6" stroke-width="2.4"><circle cx="10" cy="10" r="6"/><path d="M15 15l6 6"/></svg><span>Search Google or type a URL</span><svg style="margin-left:auto" width="16" height="18" viewBox="0 0 24 24" fill="#9AA0A6"><path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V21h2v-3.1A7 7 0 0 0 19 11z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9AA0A6" stroke-width="2"><rect x="4" y="5" width="16" height="15" rx="4"/><circle cx="12" cy="12" r="3"/></svg></div><span>&#9733;</span><span>&#8942;</span></div><div class="bookmarks"><span>Bookmarks</span><span>Reading</span><span>Design</span><span>Inspiration</span></div><div class="content"><div class="google">Google</div><div class="search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9AA0A6" stroke-width="2.4"><circle cx="10" cy="10" r="6"/><path d="M15 15l6 6"/></svg><span>Search Google or type a URL</span><svg style="margin-left:auto" width="16" height="18" viewBox="0 0 24 24" fill="#9AA0A6"><path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V21h2v-3.1A7 7 0 0 0 19 11z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9AA0A6" stroke-width="2"><rect x="4" y="5" width="16" height="15" rx="4"/><circle cx="12" cy="12" r="3"/></svg></div><div class="shortcuts"><div class="shortcut"><div class="circle"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z" fill="#E8EAED"/></svg></div>Videos</div><div class="shortcut"><div class="circle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8EAED" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.6 3.4 2.6 12.6 0 16M12 4c-2.6 3.4-2.6 12.6 0 16"/></svg></div>Web</div><div class="shortcut"><div class="circle"><svg width="18" height="18" viewBox="0 0 24 24" stroke="#E8EAED" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>Add shortcut</div></div></div><div class="customize"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#E8EAED" stroke-width="2"><path d="M4 20l4-1 10-10-3-3L5 16z"/></svg>Customize Chrome</div></div></div></div></body></html>

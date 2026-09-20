@@ -1,0 +1,168 @@
+{
+  "manifest_version": 3,
+  "version": "1.0.0",
+  "name": "Ethereal Violet Theme",
+  "description": "A deep plum Chrome theme with soft lilac surfaces and a quiet orchid accent.",
+  "icons": {
+    "128": "logo/logo128.png"
+  },
+  "theme": {
+    "colors": {
+      "frame": [
+        59,
+        42,
+        70
+      ],
+      "frame_inactive": [
+        74,
+        56,
+        84
+      ],
+      "toolbar": [
+        74,
+        56,
+        84
+      ],
+      "background_tab": [
+        59,
+        42,
+        70
+      ],
+      "tab_text": [
+        246,
+        236,
+        250
+      ],
+      "tab_background_text": [
+        192,
+        169,
+        204
+      ],
+      "toolbar_button_icon": [
+        227,
+        211,
+        236
+      ],
+      "button_background": [
+        92,
+        71,
+        103
+      ],
+      "omnibox_background": [
+        44,
+        31,
+        54
+      ],
+      "omnibox_text": [
+        237,
+        226,
+        242
+      ],
+      "bookmark_text": [
+        192,
+        169,
+        204
+      ],
+      "ntp_background": [
+        34,
+        24,
+        42
+      ],
+      "ntp_text": [
+        241,
+        231,
+        245
+      ],
+      "ntp_link": [
+        199,
+        155,
+        224
+      ],
+      "frame_incognito": [
+        43,
+        31,
+        51
+      ],
+      "frame_incognito_inactive": [
+        63,
+        48,
+        72
+      ],
+      "background_tab_inactive": [
+        59,
+        42,
+        70
+      ],
+      "background_tab_incognito": [
+        43,
+        31,
+        51
+      ],
+      "background_tab_incognito_inactive": [
+        59,
+        42,
+        70
+      ],
+      "tab_background_text_inactive": [
+        192,
+        169,
+        204
+      ],
+      "tab_background_text_incognito": [
+        192,
+        169,
+        204
+      ],
+      "tab_background_text_incognito_inactive": [
+        192,
+        169,
+        204
+      ],
+      "ntp_header": [
+        241,
+        231,
+        245
+      ],
+      "toolbar_text": [
+        192,
+        169,
+        204
+      ]
+    },
+    "tints": {
+      "buttons": [
+        0.774,
+        0.2,
+        0.275
+      ],
+      "frame": [
+        0.768,
+        0.25,
+        0.22
+      ],
+      "frame_inactive": [
+        0.774,
+        0.2,
+        0.275
+      ],
+      "frame_incognito": [
+        0.767,
+        0.244,
+        0.161
+      ],
+      "frame_incognito_inactive": [
+        0.771,
+        0.2,
+        0.235
+      ],
+      "background_tab": [
+        0.768,
+        0.25,
+        0.22
+      ]
+    },
+    "properties": {
+      "ntp_logo_alternate": 1
+    }
+  }
+}
